@@ -1,8 +1,10 @@
 var allowedGuesses;
 var correctGuesses;
 var incorrectGuesses;
+var guessesRemaining;
 var phraseElement = document.getElementById("phrase");
 
+//Create an array of Musciians (as phrases) to be guessed & save array in a variable.
 var phrase = [
 	"Willie Nelson",
 	"Johnny Cash",
@@ -12,7 +14,7 @@ var phrase = [
 	"John Prine"
 ];
 
-console.log(phrase[2]);
+console.log(phrase[3]);
 
 var image = [
 	"http://d2s4ckmcfyogn8.cloudfront.net/sites/default/files/header_main_images/country-western-music-eps-23986846.jpg",
@@ -27,22 +29,25 @@ var image = [
 // var phraseCount = document.getElementById("phraseCount");
 // 	console.log(phraseCount);
 
-var ranPhrase = phrase[Math.floor(Math.random() * phrase.length)];
-	console.log(ranPhrase);
+//Pick a random phrase from the array.
+var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
+	console.log(randPhrase);
+
+// Create an empty array to use as the currentPhrase for Hangman &
+// fill it with underscores to match the number of letters in the phrase.
+// The For loop creates a looping variable i that starts at 0 and goes up to (but does not include) randPhrase.length. 
+// Each time around the loop, we add a new element to curPhrase array, at curPhrase[i]. 
+// When the loop finishes, curPhrase array will be the same length as the phrase.
 
 var curPhrase = [];
-	for (var i = 0; i < ranPhrase.length; i++) {
-		ranPhrase[i] = "_";
+	for (var i = 0; i < randPhrase.length; i++) {
+		curPhrase[i] = "_";
 	}
 
-	console.log(phrase);
+	console.log(curPhrase);
 
-var correctGuesses = phrase.length;
-
-// function curPhrase() {
-// 	curPhrase = phrase[Math.floor(Math.random() * phrase[]];
-// 	console.log(curPhrase);
-// 	return curPhrase; }
+var guessesRemaining = randPhrase.length;
+	console.log(guessesRemaining);
 
 
 function InitializeGame() {
