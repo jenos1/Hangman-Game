@@ -2,6 +2,7 @@ var allowedGuesses;
 var correctGuesses;
 var incorrectGuesses;
 var guessesRemaining;
+var lettersGuessed;
 var wordElement = document.getElementById('word');
 
 var lettersGuessedElement = document.getElementById('lettersGuessed');
@@ -42,13 +43,37 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 // When the loop finishes, blankPhrase array (underscores) will be the same length as the phrase.
 // Print it to the html document where <p> id = word. Make sure DOM is ready before calling script.
 
-document.addEventListener("DOMContentLoaded", function(event) {
-var blankPhrase = [];
+var blankPhrase = []; 
+
+function displayWord(letter="") {
+	console.log("this is it", letter);
+	console.log("This guess", randPhrase);
+	var wordContainer = document.getElementById("word");
+	wordContainer.innerHTML = "";
 	for (var i = 0; i < randPhrase.length; i++) {
-		blankPhrase[i] = "_";
-		console.log(blankPhrase,randPhrase);
-		document.getElementById("word").innerHTML = blankPhrase.join(" ");    
-	};
+		var lowerCaseLetter= letter.toLowerCase();
+		var letterInsidePhrase = randPhrase[i].toLowerCase();
+		console.log(letterInsidePhrase, lowerCaseLetter);
+			if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
+				blankPhrase[i] = letter;
+			}
+			else {
+				if (/[a-zA-Z]/.test(blankPhrase[i])) {
+					blankPhrase[i] = blankPhrase[i];
+				}
+			  else {
+					blankPhrase[i] = "_";
+			  }
+			}
+	   
+			
+		};	
+	console.log(blankPhrase, "This is blank");
+	wordContainer.innerHTML = blankPhrase.join(" "); 
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	displayWord()
 });
 
 //Create variable to track guessesRemaining. Decrement this variable for each correct guess.
@@ -64,6 +89,7 @@ function initializeGame() {
 	correctGuesses = [];
 	incorrectGuesses = [];
 	guessesRemaining = [];
+	lettersGuessed = [];
 }
 
 function changeImage() {
@@ -76,26 +102,27 @@ function changeImage() {
 document.onkeyup = function(event) {
 	var lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
 	console.log(lettersGuessed);
+	displayWord(lettersGuessed);
 	
 	}
 	//see if letters guess is in randPhase
 		//if true
 		//run code that selects place holder, replace _'s with letter guessed, replace placeholder with new 
-		// if (randPhrase.indexOf(lettersGuessed) >= 0) 
+	if (randPhrase.indexOf(lettersGuessed) >= 0) 
 			
-			//replace underscore with the letter
-			// for (var i = 0; i< randPhrase.length; i++) {
-			// 	if (randPhrase[i] === lettersGuessed) {
-			// 		correctGuesses[i] = lettersGuessed;
-			// 	}
-			// 	console.log(randPhrase.indexOf(lettersGuessed));
+			// replace underscore with the letter
+		for (var i = 0; i< randPhrase.length; i++) {
+			if (randPhrase[i] === lettersGuessed) {
+				correctGuesses[i] = lettersGuessed;
+			}
+			console.log(randPhrase.indexOf(lettersGuessed));
 
-			// 	// wordElement.innerHTML = correctGuesses.join(' ');
-			// }
+			wordElement.innerHTML = correctGuesses.join(' ');
+			}
 
-		// }
-		   // if (letterGuessed == 'randPhrase')
-			// $('#curPhrase strong').text("damnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdns")
+
+		 // if (letterGuessed == 'randPhrase')
+		// $('#curPhrase strong').text("damnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdns")
 
 		// } else {
 		// 	$('#curPhrase strong').text("damnnnnnnnnnnn cdns")
