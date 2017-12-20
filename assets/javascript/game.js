@@ -40,14 +40,16 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 // The For loop creates a looping variable i that starts at 0 and goes up to (but does not include) randPhrase.length. 
 // Each time around the loop, we add a new element to blankPhrase array, at blankPhrase[i]. 
 // When the loop finishes, blankPhrase array (underscores) will be the same length as the phrase.
-// Print it to the html document where <p> id = word.
+// Print it to the html document where <p> id = word. Make sure DOM is ready before calling script.
+
+document.addEventListener("DOMContentLoaded", function(event) {
 var blankPhrase = [];
 	for (var i = 0; i < randPhrase.length; i++) {
 		blankPhrase[i] = "_";
 		console.log(blankPhrase,randPhrase);
-		// document.getElementById("word").innerHTML = blankPhrase.join(" ");    
+		document.getElementById("word").innerHTML = blankPhrase.join(" ");    
 	};
-
+});
 
 //Create variable to track guessesRemaining. Decrement this variable for each correct guess.
 var guessesRemaining = randPhrase.length;
@@ -56,7 +58,7 @@ var guessesRemaining = randPhrase.length;
 
 // Create a function to initialize the game variables to start or restart.
 function initializeGame() {
-	phrase = [0];
+	phrase = [];
 	image =[0];
 	allowedGuesses = 15;
 	correctGuesses = [];
