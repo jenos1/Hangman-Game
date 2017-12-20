@@ -45,7 +45,8 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 
 var blankPhrase = []; 
 
-function displayWord(letter="") {
+function displayWord(letter = "") {
+
 	console.log("this is it", letter);
 	console.log("This guess", randPhrase);
 	var wordContainer = document.getElementById("word");
@@ -54,20 +55,21 @@ function displayWord(letter="") {
 		var lowerCaseLetter= letter.toLowerCase();
 		var letterInsidePhrase = randPhrase[i].toLowerCase();
 		console.log(letterInsidePhrase, lowerCaseLetter);
+
+	// check if the letter passed in is equal to the current letter of the 
+	// random phrase and set the letter to the array for displaying
 			if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
 				blankPhrase[i] = letter;
-			}
-			else {
-				if (/[a-zA-Z]/.test(blankPhrase[i])) {
+			} else {
+				if (/[a-zA-Z]/.test(blankPhrase[i]) && blankPhrase[i]) {
 					blankPhrase[i] = blankPhrase[i];
-				}
-			  else {
+				} else {
 					blankPhrase[i] = "_";
 			  }
 			}
 	   
 			
-		};	
+		}	
 	console.log(blankPhrase, "This is blank");
 	wordContainer.innerHTML = blankPhrase.join(" "); 
 }
