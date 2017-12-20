@@ -7,6 +7,7 @@
 	<!-- Place this defer code, which contains everything you need, within the <head> of each template or page that you want to use Font Awesome on. -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 	<script src="assets/javascript/game.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -22,14 +23,14 @@
 		<div class="col-sm-7">
 			<div class="game-rules">
 			  <p> <strong> Directions: </strong> Press any key to start entering letters in the "Current Musician" section.</p> <br>
-			<div id = "curPhrase" class="current-musician">
+			<div id="curPhrase" class="current-musician">
 			  <p> <strong>Current Musician</strong> </p>
-			  <p>_ _ _ _ _ _ _ _</p>
+			  <p id="word">_ _ _ </p>
 			</div>
 			<div class="guesses-remaining">
 				<p> <strong>Number of Guesses Remaining:</strong> 1</p>
 		  </div>
-		  <div class="letters-guessed">
+		  <div id="lettersGuessed" class="lettersGuessed">
 				<p> <strong>Letters Guessed:</strong> A,</p>
 		  </div>
 		  <div class="wins">
@@ -54,7 +55,7 @@
 
 						<img class="countryPic" src="http://d2s4ckmcfyogn8.cloudfront.net/sites/default/files/header_main_images/country-western-music-eps-23986846.jpg" class="media-object" alt="Country Music images" height="150" width="150">
 
-						<img class="countryPic" src="http://calcoastnews.com/images/2011/01/willie_nelson1.jpg" class="media-object" alt="Willie Nelson" height="150" width="150">
+						<!-- <img class="countryPic" src="http://calcoastnews.com/images/2011/01/willie_nelson1.jpg" class="media-object" alt="Willie Nelson" height="150" width="150">
 
 						<img class="countryPic" src="https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg" alt="Johnny Cash" height="150" width="150">
 
@@ -64,7 +65,7 @@
 
 						<img class="countryPic" src="http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg" class="media-object" alt="Irish Dement" height="150" width="150">
 
-						<img class="countryPic" src="https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg" class="media-object" alt="John Prine" height="150" width="150">
+						<img class="countryPic" src="https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg" class="media-object" alt="John Prine" height="150" width="150"> -->
 				
 					</div>
 				</div>
@@ -81,7 +82,7 @@
 		  </nav>
 	</div>
 	</footer>
-
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </body>
 </html>
 

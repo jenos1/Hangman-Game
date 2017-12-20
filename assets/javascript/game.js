@@ -2,7 +2,9 @@ var allowedGuesses;
 var correctGuesses;
 var incorrectGuesses;
 var guessesRemaining;
-var phraseElement = document.getElementById("phrase");
+var wordElement = document.getElementById('word');
+
+var lettersGuessedElement = document.getElementById('lettersGuessed');
 
 // Create an array of images to cycle through based on curPhrase "WIN" status. 
 // Default will be first image listed.
@@ -29,9 +31,6 @@ var phrase = [
 
 console.log(phrase[3]);
 
-// var phraseCount = document.getElementById("phraseCount");
-// 	console.log(phraseCount);
-
 //Use Math.floor/Math.random to pick a random phrase from the array to display to user.
 var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 	console.log(randPhrase);
@@ -39,22 +38,26 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 // Create an empty array to use as the currentPhrase to solve for Hangman &
 // fill it with underscores to match the number of letters in the random phrase chosen.
 // The For loop creates a looping variable i that starts at 0 and goes up to (but does not include) randPhrase.length. 
-// Each time around the loop, we add a new element to curPhrase array, at curPhrase[i]. 
-// When the loop finishes, curPhrase array will be the same length as the phrase.
-var curPhrase = [];
+// Each time around the loop, we add a new element to blankPhrase array, at blankPhrase[i]. 
+// When the loop finishes, blankPhrase array (underscores) will be the same length as the phrase.
+// Print it to the html document where <p> id = word.
+var blankPhrase = [];
 	for (var i = 0; i < randPhrase.length; i++) {
-		curPhrase[i] = "_";
-	}
+		blankPhrase[i] = "_";
+		console.log(blankPhrase,randPhrase);
+		// document.getElementById("word").innerHTML = blankPhrase.join(" ");    
+	};
 
-	console.log(curPhrase);
 
 //Create variable to track guessesRemaining. Decrement this variable for each correct guess.
 var guessesRemaining = randPhrase.length;
+	
 	console.log(guessesRemaining);
 
-// Create a function to nitialize the game variables to start or restart.
-function InitializeGame() {
-	phrase = "Willie Nelson";
+// Create a function to initialize the game variables to start or restart.
+function initializeGame() {
+	phrase = [0];
+	image =[0];
 	allowedGuesses = 15;
 	correctGuesses = [];
 	incorrectGuesses = [];
@@ -69,7 +72,34 @@ function changeImage() {
 }
 
 document.onkeyup = function(event) {
-	var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-	console.log(letterGuessed);
-}
+	var lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	console.log(lettersGuessed);
+	
+	}
+	//see if letters guess is in randPhase
+		//if true
+		//run code that selects place holder, replace _'s with letter guessed, replace placeholder with new 
+		// if (randPhrase.indexOf(lettersGuessed) >= 0) 
+			
+			//replace underscore with the letter
+			// for (var i = 0; i< randPhrase.length; i++) {
+			// 	if (randPhrase[i] === lettersGuessed) {
+			// 		correctGuesses[i] = lettersGuessed;
+			// 	}
+			// 	console.log(randPhrase.indexOf(lettersGuessed));
+
+			// 	// wordElement.innerHTML = correctGuesses.join(' ');
+			// }
+
+		// }
+		   // if (letterGuessed == 'randPhrase')
+			// $('#curPhrase strong').text("damnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdns")
+
+		// } else {
+		// 	$('#curPhrase strong').text("damnnnnnnnnnnn cdns")
+
+  //    }
+		//if false
+		// place guess into guessed letter
+
 
