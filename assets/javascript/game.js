@@ -1,11 +1,28 @@
 var allowedGuesses;
 var correctGuesses;
 var incorrectGuesses;
-var guessesRemaining;
 var lettersGuessed;
-var wordElement = document.getElementById('word');
+var counter = 0;
+var messages = {
+	win: "You win!",
+	lose: "Game over! Play again.",
+}
+messages = document.getElementById("messages");
 
-var lettersGuessedElement = document.getElementById('lettersGuessed');
+
+
+// Create a function to initialize the game variables to start or restart.
+function initializeGame() {
+	phrase = [];
+	image =[0];
+	// allowedGuesses = 15;
+	correctGuesses = [];
+	incorrectGuesses = [];
+	guessesRemaining = 15;
+	lettersGuessed = [];
+	messages.innerHTML = "";
+
+}
 
 // Create an array of images to cycle through based on curPhrase "WIN" status. 
 // Default will be first image listed.
@@ -18,7 +35,7 @@ var image = [
 	"http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg",
 	"http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg",
 	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
-]
+];
 
 //Create an array of Musciians (as phrases) to be guessed & save array in a variable.
 var phrase = [
@@ -45,54 +62,47 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 
 var blankPhrase = []; 
 
+//Parameter "letter" is letter the user guesses & is initialized to empty.
 function displayWord(letter = "") {
 
-	console.log("this is it", letter);
-	console.log("This guess", randPhrase);
+	console.log("this is the letter:", letter);
+	console.log("This is the guess:", randPhrase);
 	var wordContainer = document.getElementById("word");
+	// var lettersGuessedElement = document.getElementById('lettersGuessed');
 	wordContainer.innerHTML = "";
+
 	for (var i = 0; i < randPhrase.length; i++) {
-		var lowerCaseLetter= letter.toLowerCase();
+		var lowerCaseLetter = letter.toLowerCase();
 		var letterInsidePhrase = randPhrase[i].toLowerCase();
 		console.log(letterInsidePhrase, lowerCaseLetter);
 
-	// check if the letter passed in is equal to the current letter of the 
-	// random phrase and set the letter to the array for displaying
+	// Check if the letter passed in is equal to the current letter of the 
+	// random phrase and set the letter guessed to the array for displaying.
+	// The JS test() method tests for a regular expression (object) match in a string & returns true if found.
 			if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
 				blankPhrase[i] = letter;
+
 			} else {
 				if (/[a-zA-Z]/.test(blankPhrase[i]) && blankPhrase[i]) {
 					blankPhrase[i] = blankPhrase[i];
 				} else {
-					blankPhrase[i] = "_";
+					blankPhrase[i] = "_";				
 			  }
-			}
-	   
+			} 
 			
 		}	
-	console.log(blankPhrase, "This is blank");
+	console.log(blankPhrase, "This is the blank phrase");
 	wordContainer.innerHTML = blankPhrase.join(" "); 
+
+	// allowedGuesses--; //decrement guesses left
+	// console.log(allowedGuesses);
+	// lettersGuessedElement.innerHTML = allowedGuesses;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	displayWord()
 });
 
-//Create variable to track guessesRemaining. Decrement this variable for each correct guess.
-var guessesRemaining = randPhrase.length;
-	
-	console.log(guessesRemaining);
-
-// Create a function to initialize the game variables to start or restart.
-function initializeGame() {
-	phrase = [];
-	image =[0];
-	allowedGuesses = 15;
-	correctGuesses = [];
-	incorrectGuesses = [];
-	guessesRemaining = [];
-	lettersGuessed = [];
-}
 
 function changeImage() {
 	var image = [0];
@@ -105,22 +115,18 @@ document.onkeyup = function(event) {
 	var lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
 	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
-	
-	}
-	//see if letters guess is in randPhase
-		//if true
-		//run code that selects place holder, replace _'s with letter guessed, replace placeholder with new 
-	if (randPhrase.indexOf(lettersGuessed) >= 0) 
-			
-			// replace underscore with the letter
-		for (var i = 0; i< randPhrase.length; i++) {
-			if (randPhrase[i] === lettersGuessed) {
-				correctGuesses[i] = lettersGuessed;
-			}
-			console.log(randPhrase.indexOf(lettersGuessed));
+}
 
-			wordElement.innerHTML = correctGuesses.join(' ');
-			}
+// Create variable to track guessesRemaining. Decrement this variable for each correct guess.
+var guessesRemaining;
+// lettersGuessed = parseInt(lettersGuessed);
+guessesRemaining = randPhrase.length - lettersGuessed;
+guessesRemaining = document.getElementById("guessesRemaining");
+// guessesRemaining.innerHTML = 
+guessesRemaining-- ;
+
+	console.log(lettersGuessed);
+	console.log(guessesRemaining);
 
 
 		 // if (letterGuessed == 'randPhrase')
