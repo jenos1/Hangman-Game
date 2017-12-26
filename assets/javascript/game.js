@@ -1,14 +1,11 @@
-var allowedGuesses;
-var correctGuesses;
-var incorrectGuesses;
+var guessesRemaining = 15;
 var lettersGuessed;
-var numLettersGuessed;
-var counter = 0;
+var lettersGuessedArr = [];
 messages = {
 	win: "You win!",
 	lose: "Game over! Play again.",
 };
-messages = document.getElementById("messages");
+winsOutput = document.getElementById("messages");
 
 
 
@@ -16,12 +13,7 @@ messages = document.getElementById("messages");
 function initializeGame() {
 	phrase = [];
 	image =[0];
-	allowedGuesses = 15;
-	correctGuesses = [];
-	incorrectGuesses = [];
-	guessesRemaining = 0;
 	lettersGuessed = [];
-	numLettersGuessed = 0;
 	messages.innerHTML = "";
 
 }
@@ -70,6 +62,7 @@ function displayWord(letter = "") {
 	console.log("this is the letter:", letter);
 	console.log("This is the guess:", randPhrase);
 	var wordContainer = document.getElementById("word");
+	var numGuessesRemainingElement = document.getElementById("guessesRemaining");
 	wordContainer.innerHTML = "";
 
 	for (var i = 0; i < randPhrase.length; i++) {
@@ -96,15 +89,19 @@ function displayWord(letter = "") {
 		if (letterInsidePhrase === phrase.toLowerCase) {
 			console.log("win");
 		}
-		// }
 
-	console.log(blankPhrase, "This is the blank phrase");
+		console.log(blankPhrase, "This is the blank phrase");
     wordContainer.innerHTML = blankPhrase.join(" ");
+    guessesRemaining--; 
+		console.log(guessesRemaining);
+		numGuessesRemainingElement.innerHTML = guessesRemaining;
 
+		// if (guessesRemaining <= 0) {
+		// 	console.log("lose");
+		// 	messages = document.getElementById("messages");
+		// 	winsOutput.innerHTML = messages.lose;
 
-	allowedGuesses--; //decrement guesses left
-	console.log(allowedGuesses);
-	lettersGuessedElement.innerHTML = allowedGuesses;
+		// }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -121,98 +118,28 @@ function changeImage() {
 }
 
 document.onkeyup = function(event) {
-  var lettersGuessed = [];
-  var keyCount;
-	var lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	lettersGuessedArr.push(lettersGuessed);
 	var lettersGuessedElement = document.getElementById("lettersGuessed");
 	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
 
-
-	lettersGuessedElement.innerHTML = lettersGuessed + ",";
+	lettersGuessedElement.innerHTML = lettersGuessedArr;
 
 }
 
-
-// var Guessed = [];
-// 	document.onkeyup = function (e){
-
-// 		var keyCount = document.getElementById("lettersGuessed");
-
-// 		if (typeof event !== "undefined") {
-
-// 		}
-// 		else if (e) {
-// 			keyCount = e.which;
-// 		}
-// 		lettersGuessed.push(String.fromCharCode(keyCount));
-			
-
-// 		return false; //prevents default action
-// 	};
-
-
-	// var guessesRemaining = allowedGuesses - document.onkeyup();
-
-// document.getElementById("guessesRemaining").onkeyup = function() {
-
-// }
-
 // function gameOver(win) {
 // 	var messagesElement = document.getElementById("messages");
-// 	var numLettersGuessed = document.onkeyup(e);
-// 	var allowedGuesses = 15;
-
-// 	console.log(numLettersGuessed);
 
 
-//   //       if (win) {
-//   //           messages.innerHTML = messages.win;
+
+//   if (win) {
+//   messages.innerHTML = messages.win;
         
-//   //       } else {
-//   //           messages.innerHTML = messages.lose;
-//   //       }
-//     }
+//   } else {
+//   messages.innerHTML = messages.lose;
+//   }
+//  }
 
-
-// $('input').keyup(function(e) {
-// 	var keyCount = allowedGuesses--;
-// 	console.log(keyCount);
-
-
-	
-// document.onkeyup = function(event) {
-// 	var guessesRemaining = keyCount ++;
-// 	guessesRemaining = allowedGuesses - keyCount;
-// 	console.log(keyCount, "This is the keyCount");
-// 	console.log(allowedGuesses);
-// };
-
-// function displayKeyCount(keyCount = 0) {
-// 	var guessesRemainingElement = document.getElementById("guessesRemaining");
-// 	guessesRemainingElement.innerHTML = 0;
-// // var lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-// // var keyCount = 0;
-
-
-
-// Create variable to track guessesRemaining. Decrement this variable for each correct guess.
-// var guessesRemaining;
-// // lettersGuessed = parseInt(lettersGuessed);
-// guessesRemaining = randPhrase.length - lettersGuessed;
-// guessesRemaining = document.getElementById("guessesRemaining");
-// // guessesRemaining.innerHTML = 
-// guessesRemaining-- ;
-
-
-		 // if (letterGuessed == 'randPhrase')
-		// $('#curPhrase strong').text("damnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdnsdamnnnnnnnnnnn cdns")
-
-		// } else {
-		// 	$('#curPhrase strong').text("damnnnnnnnnnnn cdns")
-
-  //    }
-		//if false
-		// place guess into guessed letter
 
 
