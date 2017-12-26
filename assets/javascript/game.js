@@ -92,9 +92,9 @@ function displayWord(letter = "") {
 
 		console.log(blankPhrase, "This is the blank phrase");
     wordContainer.innerHTML = blankPhrase.join(" ");
+    console.log(guessesRemaining); //15
+    numGuessesRemainingElement.innerHTML = guessesRemaining;
     guessesRemaining--; 
-		console.log(guessesRemaining);
-		numGuessesRemainingElement.innerHTML = guessesRemaining;
 
 		// if (guessesRemaining <= 0) {
 		// 	console.log("lose");
