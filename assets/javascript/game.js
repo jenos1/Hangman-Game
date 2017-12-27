@@ -1,6 +1,7 @@
 var guessesRemaining = 15;
 var lettersGuessed;
 var lettersGuessedArr = [];
+var wins = 0;
 messages = {
 	win: "You win!",
 	lose: "Game over! Play again.",
@@ -11,8 +12,7 @@ winsOutput = document.getElementById("messages");
 
 // Create a function to initialize the game variables to start or restart.
 function initializeGame() {
-	phrase = [];
-	image =[0];
+	guessesRemaining = 15;
 	lettersGuessed = [];
 	messages.innerHTML = "";
 
@@ -55,7 +55,7 @@ console.log(phrase[3]);
 
 //Use Math.floor/Math.random to pick a random phrase from the array to display to user.
 var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
-	console.log(randPhrase);
+console.log(randPhrase);
 
 // Create an empty array to use as the currentPhrase to solve for Hangman &
 // fill it with underscores to match the number of letters in the random phrase chosen.
@@ -64,7 +64,7 @@ var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 // When the loop finishes, blankPhrase array (underscores) will be the same length as the phrase.
 // Print it to the html document where <p> id = word. Make sure DOM is ready before calling script.
 
-var blankPhrase = []; 
+var blankPhrase = [];
 
 //Parameter "letter" is letter the user guesses & is initialized to empty.
 function displayWord(letter = "") {
@@ -80,59 +80,74 @@ function displayWord(letter = "") {
 		var letterInsidePhrase = randPhrase[i].toLowerCase();
 		console.log(letterInsidePhrase, lowerCaseLetter);
 
-	// Check if the letter passed in is equal to the current letter of the 
-	// random phrase and set the letter guessed to the array for displaying.
-	// The JS test() method tests for a regular expression (object) match in a string & returns true if found.
-			if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
-				blankPhrase[i] = letter;
+		// Check if the letter passed in is equal to the current letter of the 
+		// random phrase and set the letter guessed to the array for displaying.
+		// The JS test() method tests for a regular expression (object) match in a string & returns true if found.
+		if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
+			blankPhrase[i] = letter;
 
+		} else {
+			if (/[a-zA-Z]/.test(blankPhrase[i]) && blankPhrase[i]) {
+				blankPhrase[i] = blankPhrase[i];
 			} else {
-				if (/[a-zA-Z]/.test(blankPhrase[i]) && blankPhrase[i]) {
-					blankPhrase[i] = blankPhrase[i];
-				} else {
-					blankPhrase[i] = "_";				
-			  }
-			} 
-
+				blankPhrase[i] = "_";
+			}
 		}
+	}
 
-		if (letterInsidePhrase === phrase.toLowerCase) {
-			console.log("win");
-		}
+	console.log(blankPhrase, "This is the blank phrase");
+	wordContainer.innerHTML = blankPhrase.join(" ");
 
-		console.log(blankPhrase, "This is the blank phrase");
-    wordContainer.innerHTML = blankPhrase.join(" ");
-   
-    numGuessesRemainingElement.innerHTML = guessesRemaining;
-    guessesRemaining--; 
+	numGuessesRemainingElement.innerHTML = guessesRemaining;
+	guessesRemaining--;
 
-		// if (guessesRemaining <= 0) {
-		// 	console.log("lose");
-		// 	messages = document.getElementById("messages");
-		// 	winsOutput.innerHTML = messages.lose;
+	// if (guessesRemaining <= 0) {
+	// 	console.log("lose");
+	// 	messages = document.getElementById("messages");
+	// 	winsOutput.innerHTML = messages.lose;
 
-		// }
+	// }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
 	displayWord()
 });
 
-
+function checkWin() {
+	\\check user lose
+	if (guessesRemaining === 0) {
+		\\reset game
+		return
+	
+	}
+	\\check user win 
+	var blankLetter = false;
+	var messagesElement = document.getElementById("messages");
+	for (var i = 0; i < blankPhrase.length; i++) {
+		if (blankPhrase[i] = "_") {
+			blankLetter = true;
+		}
+	}
+	if (blankLetter === false) {
+		wins++;
+		messages.innerHTML = messages.win;
+	}
+}
 
 function changeImage() {
 	var image = [0];
 	// if user solves phrase then change image to phrase of musician selected
 	// First image is the default image displayed prior to solving the phrase, e.g. generic country picture.
-	
+
 }
 
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
 	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
 	lettersGuessedArr.push(lettersGuessed);
 	var lettersGuessedElement = document.getElementById("lettersGuessed");
 	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
+	checkWin();
 
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
 
@@ -145,11 +160,8 @@ document.onkeyup = function(event) {
 
 //   if (win) {
 //   messages.innerHTML = messages.win;
-        
+
 //   } else {
 //   messages.innerHTML = messages.lose;
 //   }
 //  }
-
-
-
