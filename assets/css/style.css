@@ -21,6 +21,10 @@ h2 {
 	0 0 150px #ff00de;
 }
 
+#player {
+	width: 50%;
+}
+
 .game-rules {
 	text-align: left;
 	padding-top: 20px;

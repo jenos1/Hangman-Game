@@ -31,6 +31,16 @@ var image = [
 	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
 ];
 
+var video = [
+	"https://www.youtube.com/watch?v=dBN86y30Ufc",
+	"https://www.youtube.com/watch?v=N8i5NLyXZdc",
+	"https://www.youtube.com/watch?v=6QEDb3xzdec",
+	"https://www.youtube.com/watch?v=SuapCENFM2U",
+	"https://www.youtube.com/watch?v=FikZwgj89HI",
+	"https://www.youtube.com/watch?v=lS8RjCRolSM"
+
+];
+
 //Create an array of Musciians (as phrases) to be guessed & save array in a variable.
 var phrase = [
 	"Willie Nelson",
@@ -92,7 +102,7 @@ function displayWord(letter = "") {
 
 		console.log(blankPhrase, "This is the blank phrase");
     wordContainer.innerHTML = blankPhrase.join(" ");
-    console.log(guessesRemaining); //15
+   
     numGuessesRemainingElement.innerHTML = guessesRemaining;
     guessesRemaining--; 
 
