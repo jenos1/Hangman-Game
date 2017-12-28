@@ -31,14 +31,14 @@
 				<p> <strong>Number of Guesses Remaining:</strong> </p>
 				<p id="guessesRemaining"> </p>
 		  </div>
-		  <div class="letters-guessed">
-				<p> <strong>Letters Guessed:</strong> </p>
-				<p id="lettersGuessed"> </p>
-		  </div>
-		  <div class="wins">
-		  		<i id="wins" class="far fa-star fa-spin fa-1x fa-fw "></i> <strong>WINS:</strong> 1 
-		  		<p id = "messages">  </p>
-
+			<div class="letters-guessed">
+				  <p> <strong>Letters Guessed:</strong> </p>
+				  <p id="lettersGuessed"> </p>
+			</div>
+			<div class="wins">
+				<i class="far fa-star fa-spin fa-1x fa-fw "></i> <strong>WINS: </strong>  
+				<p id="wins">  </p>
+		  	<p id="messages">  </p>
 		  </div>
 		</div>
 	</div>
@@ -51,7 +51,8 @@
 				    <ul class="list-group">
 				      <li class="list-group-item">Name</li>
 				      <li class="list-group-item">Now Playing!</li> 
-				      	<audio id="player" controls autoplay>
+				      <!-- removed autoply for now -->
+				      	<audio id="player" controls> 
 				      		<source src="assets/audio/All_The_Best.mp3" type="audio/mpeg">
 				      	</audio>
 				      <li class="list-group-item">Short History</li> 

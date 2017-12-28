@@ -2,20 +2,21 @@ var guessesRemaining = 15;
 var lettersGuessed;
 var lettersGuessedArr = [];
 var wins = 0;
+var updateWinsElement = document.getElementById("wins");
+var winsOutput = document.getElementById("messages");
 messages = {
 	win: "You win!",
 	lose: "Game over! Play again.",
 };
-winsOutput = document.getElementById("messages");
-
 
 
 // Create a function to initialize the game variables to start or restart.
 function initializeGame() {
 	guessesRemaining = 15;
-	lettersGuessed = [];
-	messages.innerHTML = "";
-
+	wins = 0;
+	lettersGuessedArr = [];
+	messagesElement.innerHTML = "";
+	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 }
 
 // Create an array of images to cycle through based on curPhrase "WIN" status. 
@@ -38,7 +39,6 @@ var video = [
 	"https://www.youtube.com/watch?v=SuapCENFM2U",
 	"https://www.youtube.com/watch?v=FikZwgj89HI",
 	"https://www.youtube.com/watch?v=lS8RjCRolSM"
-
 ];
 
 //Create an array of Musciians (as phrases) to be guessed & save array in a variable.
@@ -50,8 +50,6 @@ var phrase = [
 	"Iris DeMent",
 	"John Prine"
 ];
-
-console.log(phrase[3]);
 
 //Use Math.floor/Math.random to pick a random phrase from the array to display to user.
 var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
@@ -100,13 +98,6 @@ function displayWord(letter = "") {
 
 	numGuessesRemainingElement.innerHTML = guessesRemaining;
 	guessesRemaining--;
-
-	// if (guessesRemaining <= 0) {
-	// 	console.log("lose");
-	// 	messages = document.getElementById("messages");
-	// 	winsOutput.innerHTML = messages.lose;
-
-	// }
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -114,23 +105,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function checkWin() {
-	\\check user lose
+	//check user lose
 	if (guessesRemaining === 0) {
-		\\reset game
-		return
+		//reset game
+		winsOutput.innerHTML = messages.lose;
+			initializeGame();
+		return 
+
 	
 	}
-	\\check user win 
+	//check user win 
 	var blankLetter = false;
-	var messagesElement = document.getElementById("messages");
+	var updateWinsElement = document.getElementById("wins");
 	for (var i = 0; i < blankPhrase.length; i++) {
-		if (blankPhrase[i] = "_") {
+		if (blankPhrase[i] === "_") {
 			blankLetter = true;
 		}
 	}
 	if (blankLetter === false) {
+
 		wins++;
-		messages.innerHTML = messages.win;
+		updateWinsElement.innerHTML = wins;
+		console.log(wins);
+		winsOutput.innerHTML = messages.win;
 	}
 }
 
@@ -142,21 +139,19 @@ function changeImage() {
 }
 
 document.onkeyup = function (event) {
+	var lettersGuessedElement = document.getElementById("lettersGuessed");
 	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
 	lettersGuessedArr.push(lettersGuessed);
-	var lettersGuessedElement = document.getElementById("lettersGuessed");
+	
 	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
 	checkWin();
-
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
 
 }
 
 // function gameOver(win) {
 // 	var messagesElement = document.getElementById("messages");
-
-
 
 //   if (win) {
 //   messages.innerHTML = messages.win;
