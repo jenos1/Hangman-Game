@@ -15,8 +15,7 @@ function initializeGame() {
 	lettersGuessedArr = [];
 	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 }
-
-// Create an array of images to cycle through based on curPhrase "WIN" status. 
+// Create an array of images to cycle through based on Phrase "WIN" status. 
 // Default will be first image listed.
 
 var image = [
@@ -29,13 +28,13 @@ var image = [
 	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
 ];
 
-var video = [
-	"https://www.youtube.com/watch?v=dBN86y30Ufc",
-	"https://www.youtube.com/watch?v=N8i5NLyXZdc",
-	"https://www.youtube.com/watch?v=6QEDb3xzdec",
-	"https://www.youtube.com/watch?v=SuapCENFM2U",
-	"https://www.youtube.com/watch?v=FikZwgj89HI",
-	"https://www.youtube.com/watch?v=lS8RjCRolSM"
+var audio = [
+	"assets/audio/On_The_Road_Again.mp3",
+	"assets/audio/Wayfaring_Stranger.mp3",
+	"assets/audio/Crazy.mp3",
+	"assets/audio/Down_At_The_Twist_And_Shout.mp3",
+	"assets/audio/Let_The_Mystery_Be.mp3",
+	"assets/audio/All_The_Best.mp3"
 ];
 
 //Create an array of Musciians (as phrases) to be guessed & save array in a variable.
@@ -113,6 +112,7 @@ function checkWin() {
 
 	//Check user win.
 	var blankLetter = false;
+	wins = 0;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_") {
@@ -120,10 +120,9 @@ function checkWin() {
 		}
 	}
 	if (blankLetter === false) {
-		console.log(wins);
-		wins++;
-		console.log(wins);
 		winsElement.innerHTML = wins;
+		wins++;
+		
 		console.log(wins);
 		messagesElement.innerHTML = messages.win;
 	}
