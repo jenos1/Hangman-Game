@@ -46,8 +46,8 @@ h2 {
 
 .guesses-remaining {
 	text-align: center;
-	padding-top: 50px;
-	padding-bottom: 10px;
+	padding-top: 45px;
+	padding-bottom: 5px;
 	background: #e5e5ff;
 }
 
@@ -55,8 +55,8 @@ h2 {
 .wins
 {
 	text-align: center;
-	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 30px;
 	background: #e5e5ff;
 }
 

@@ -2,20 +2,17 @@ var guessesRemaining = 15;
 var lettersGuessed;
 var lettersGuessedArr = [];
 var wins = 0;
-var updateWinsElement = document.getElementById("wins");
-var winsOutput = document.getElementById("messages");
+var messages;
 messages = {
 	win: "You win!",
 	lose: "Game over! Play again.",
 };
 
-
-// Create a function to initialize the game variables to start or restart.
+// Restart game. 
 function initializeGame() {
 	guessesRemaining = 15;
 	wins = 0;
 	lettersGuessedArr = [];
-	messagesElement.innerHTML = "";
 	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 }
 
@@ -64,7 +61,7 @@ console.log(randPhrase);
 
 var blankPhrase = [];
 
-//Parameter "letter" is letter the user guesses & is initialized to empty.
+//User guesses "letter".
 function displayWord(letter = "") {
 
 	console.log("this is the letter:", letter);
@@ -78,9 +75,7 @@ function displayWord(letter = "") {
 		var letterInsidePhrase = randPhrase[i].toLowerCase();
 		console.log(letterInsidePhrase, lowerCaseLetter);
 
-		// Check if the letter passed in is equal to the current letter of the 
-		// random phrase and set the letter guessed to the array for displaying.
-		// The JS test() method tests for a regular expression (object) match in a string & returns true if found.
+		// Does user guess match phrase? 
 		if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
 			blankPhrase[i] = letter;
 
@@ -105,37 +100,39 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function checkWin() {
-	//check user lose
-	if (guessesRemaining === 0) {
-		//reset game
-		winsOutput.innerHTML = messages.lose;
-			initializeGame();
-		return 
 
-	
+	//Check user lose.
+	var winsElement = document.getElementById("wins");
+	var messagesElement = document.getElementById("messages");
+	if (guessesRemaining === 0) {
+		//Reset game.
+		messagesElement.innerHTML = messages.lose;
+		initializeGame();
+		return 
 	}
-	//check user win 
+
+	//Check user win.
 	var blankLetter = false;
-	var updateWinsElement = document.getElementById("wins");
+
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_") {
 			blankLetter = true;
 		}
 	}
 	if (blankLetter === false) {
-
-		wins++;
-		updateWinsElement.innerHTML = wins;
 		console.log(wins);
-		winsOutput.innerHTML = messages.win;
+		wins++;
+		console.log(wins);
+		winsElement.innerHTML = wins;
+		console.log(wins);
+		messagesElement.innerHTML = messages.win;
 	}
 }
 
 function changeImage() {
-	var image = [0];
-	// if user solves phrase then change image to phrase of musician selected
-	// First image is the default image displayed prior to solving the phrase, e.g. generic country picture.
-
+	var image = [];
+	// First image is the default image displayed prior to solving the phrase.
+	// If user solves phrase then change image to phrase of Current Musician.
 }
 
 document.onkeyup = function (event) {
@@ -147,16 +144,4 @@ document.onkeyup = function (event) {
 	displayWord(lettersGuessed);
 	checkWin();
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
-
 }
-
-// function gameOver(win) {
-// 	var messagesElement = document.getElementById("messages");
-
-//   if (win) {
-//   messages.innerHTML = messages.win;
-
-//   } else {
-//   messages.innerHTML = messages.lose;
-//   }
-//  }
