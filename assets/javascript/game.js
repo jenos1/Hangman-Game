@@ -4,7 +4,7 @@ var lettersGuessedArr = [];
 var wins = 0;
 var messages;
 messages = {
-	win: "You win!",
+	win: "Congratulations! You win! Play again.",
 	lose: "Game over! Play again.",
 };
 
@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function checkWin() {
 
 	//Check user lose.
-	var winsElement = document.getElementById("wins");
 	var messagesElement = document.getElementById("messages");
 	if (guessesRemaining === 0) {
 		//Reset game.
@@ -112,7 +111,9 @@ function checkWin() {
 
 	//Check user win.
 	var blankLetter = false;
-	wins = 0;
+	var wins = 0;
+	var winsElement = document.getElementById("wins");
+	winsElement.innerHTML = "WINS: " + wins;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_") {
@@ -120,13 +121,12 @@ function checkWin() {
 		}
 	}
 	if (blankLetter === false) {
-		winsElement.innerHTML = wins;
+		blankLetter = true;
 		wins++;
-		
+	}	
 		console.log(wins);
 		messagesElement.innerHTML = messages.win;
 	}
-}
 
 function changeImage() {
 	var image = [];
