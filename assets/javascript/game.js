@@ -98,6 +98,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	displayWord()
 });
 
+document.onkeyup = function (event) {
+	var lettersGuessedElement = document.getElementById("lettersGuessed");
+	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	lettersGuessedArr.push(lettersGuessed);
+	lettersGuessedElement.innerHTML = lettersGuessedArr;
+	console.log(lettersGuessed);
+	displayWord(lettersGuessed);
+	// lettersGuessedElement.innerHTML = lettersGuessedArr;
+	checkWin();
+	
+}
+
 function checkWin() {
 
 	//Check user lose.
@@ -121,16 +133,27 @@ function checkWin() {
 		}
 	}
 		if (blankLetter === false) {
-			wins++;
-			messagesElement.innerHTML = messages.win;
 			blankLetter = true;	
+			//Reset game.
+			messagesElement.innerHTML = messages.win;
+			wins++;
+			winsElement.innerHTML = "WINS: " + wins;
+			initializeGame();
+			
 		}	
-
-		// console.log(wins);
-		// messagesElement.innerHTML = messages.win;
-		// wins++;
-		
 	}
+
+// document.onkeyup = function (event) {
+// 	var lettersGuessedElement = document.getElementById("lettersGuessed");
+// 	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+// 	lettersGuessedArr.push(lettersGuessed);
+// 	lettersGuessedElement.innerHTML = lettersGuessedArr;
+// 	console.log(lettersGuessed);
+// 	displayWord(lettersGuessed);
+// 	// lettersGuessedElement.innerHTML = lettersGuessedArr;
+// 	checkWin();
+	
+// }
 
 function changeImage() {
 	var image = [];
@@ -138,13 +161,4 @@ function changeImage() {
 	// If user solves phrase then change image to phrase of Current Musician.
 }
 
-document.onkeyup = function (event) {
-	var lettersGuessedElement = document.getElementById("lettersGuessed");
-	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-	lettersGuessedArr.push(lettersGuessed);
-	
-	console.log(lettersGuessed);
-	displayWord(lettersGuessed);
-	checkWin();
-	lettersGuessedElement.innerHTML = lettersGuessedArr;
-}
+
