@@ -13,7 +13,7 @@ function initializeGame() {
 	guessesRemaining = 15;
 	wins = 0;
 	lettersGuessedArr = [];
-	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
+	blankPhrase = [];
 }
 // Create an array of images to cycle through based on Phrase "WIN" status. 
 // Default will be first image listed.
@@ -102,6 +102,9 @@ function checkWin() {
 
 	//Check user lose.
 	var messagesElement = document.getElementById("messages");
+	var winsElement = document.getElementById("wins");
+	winsElement.innerHTML = "WINS: " + wins;
+
 	if (guessesRemaining === 0) {
 		//Reset game.
 		messagesElement.innerHTML = messages.lose;
@@ -111,21 +114,22 @@ function checkWin() {
 
 	//Check user win.
 	var blankLetter = false;
-	var wins = 0;
-	var winsElement = document.getElementById("wins");
-	winsElement.innerHTML = "WINS: " + wins;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_") {
 			blankLetter = true;
 		}
 	}
-	if (blankLetter === false) {
-		blankLetter = true;
-		wins++;
-	}	
-		console.log(wins);
-		messagesElement.innerHTML = messages.win;
+		if (blankLetter === false) {
+			wins++;
+			messagesElement.innerHTML = messages.win;
+			blankLetter = true;	
+		}	
+
+		// console.log(wins);
+		// messagesElement.innerHTML = messages.win;
+		// wins++;
+		
 	}
 
 function changeImage() {
