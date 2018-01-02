@@ -105,7 +105,6 @@ document.onkeyup = function (event) {
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
 	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
-	// lettersGuessedElement.innerHTML = lettersGuessedArr;
 	checkWin();
 	
 }
@@ -124,36 +123,30 @@ function checkWin() {
 		return 
 	}
 
-	//Check user win.
+	//Check user win. If user selected letters match random phrase
+	//and phrase has only underscores between the words, then user wins.
 	var blankLetter = false;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_") {
 			blankLetter = true;
 		}
-	}
+ 		
 		if (blankLetter === false) {
+		// if (blankPhrase[i] === "_" && ("\\b").test(blankPhrase[i])) {
+	
 			blankLetter = true;	
+
 			//Reset game.
 			messagesElement.innerHTML = messages.win;
 			wins++;
 			winsElement.innerHTML = "WINS: " + wins;
 			initializeGame();
+		}
 			
-		}	
 	}
 
-// document.onkeyup = function (event) {
-// 	var lettersGuessedElement = document.getElementById("lettersGuessed");
-// 	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-// 	lettersGuessedArr.push(lettersGuessed);
-// 	lettersGuessedElement.innerHTML = lettersGuessedArr;
-// 	console.log(lettersGuessed);
-// 	displayWord(lettersGuessed);
-// 	// lettersGuessedElement.innerHTML = lettersGuessedArr;
-// 	checkWin();
-	
-// }
+}	
 
 function changeImage() {
 	var image = [];
