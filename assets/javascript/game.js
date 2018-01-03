@@ -49,12 +49,9 @@ var phrase = [
 
 //Use Math.floor/Math.random to pick a random phrase from the array to display to user.
 var randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
-console.log(randPhrase);
 
 // Create an empty array to use as the currentPhrase to solve for Hangman &
 // fill it with underscores to match the number of letters in the random phrase chosen.
-// The For loop creates a looping variable i that starts at 0 and goes up to (but does not include) randPhrase.length. 
-// Each time around the loop, we add a new element to blankPhrase array, at blankPhrase[i]. 
 // When the loop finishes, blankPhrase array (underscores) will be the same length as the phrase.
 // Print it to the html document where <p> id = word. Make sure DOM is ready before calling script.
 
@@ -63,8 +60,6 @@ var blankPhrase = [];
 //User guesses "letter".
 function displayWord(letter = "") {
 
-	console.log("this is the letter:", letter);
-	console.log("This is the guess:", randPhrase);
 	var wordContainer = document.getElementById("word");
 	var numGuessesRemainingElement = document.getElementById("guessesRemaining");
 	wordContainer.innerHTML = "";
@@ -72,7 +67,6 @@ function displayWord(letter = "") {
 	for (var i = 0; i < randPhrase.length; i++) {
 		var lowerCaseLetter = letter.toLowerCase();
 		var letterInsidePhrase = randPhrase[i].toLowerCase();
-		console.log(letterInsidePhrase, lowerCaseLetter);
 
 		// Does user guess match phrase? 
 		if (letter.toLowerCase() === randPhrase[i].toLowerCase()) {
@@ -87,7 +81,6 @@ function displayWord(letter = "") {
 		}
 	}
 
-	console.log(blankPhrase, "This is the blank phrase");
 	wordContainer.innerHTML = blankPhrase.join(" ");
 
 	numGuessesRemainingElement.innerHTML = guessesRemaining;
@@ -103,7 +96,6 @@ document.onkeyup = function (event) {
 	lettersGuessed = String.fromCharCode(event.keyCode).toUpperCase();
 	lettersGuessedArr.push(lettersGuessed);
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
-	console.log(lettersGuessed);
 	displayWord(lettersGuessed);
 	checkWin();
 	
@@ -125,8 +117,6 @@ function checkWin() {
 
 	//Check user win. If user selected letters match random phrase
 	//and phrase has only underscores between the words, then user wins.
-	//Split blankPhrase into words on underscore? Then see if it matches randomPhrase?
-	//
 	var blankLetter = false;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
@@ -136,9 +126,6 @@ function checkWin() {
 	}
 
 		if (blankLetter === false) {
-	
-	
-
 			//Reset game.
 			messagesElement.innerHTML = messages.win;
 			wins++;
@@ -147,7 +134,6 @@ function checkWin() {
 		}
 			
 	}
-
 
 function changeImage() {
 	var image = [];
