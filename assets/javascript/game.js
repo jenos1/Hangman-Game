@@ -125,17 +125,19 @@ function checkWin() {
 
 	//Check user win. If user selected letters match random phrase
 	//and phrase has only underscores between the words, then user wins.
+	//Split blankPhrase into words on underscore? Then see if it matches randomPhrase?
+	//
 	var blankLetter = false;
 
 	for (var i = 0; i < blankPhrase.length; i++) {
-		if (blankPhrase[i] === "_") {
+		if (blankPhrase[i] === "_" && randPhrase[i] !== " ") {
 			blankLetter = true;
 		}
- 		
+	}
+
 		if (blankLetter === false) {
-		// if (blankPhrase[i] === "_" && ("\\b").test(blankPhrase[i])) {
 	
-			blankLetter = true;	
+	
 
 			//Reset game.
 			messagesElement.innerHTML = messages.win;
@@ -146,7 +148,6 @@ function checkWin() {
 			
 	}
 
-}	
 
 function changeImage() {
 	var image = [];
