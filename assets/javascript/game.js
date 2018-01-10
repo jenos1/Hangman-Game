@@ -32,33 +32,39 @@ var showImage;
 var media = [
 	{
 		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
-		audio: "assets/audio/On_The_Road_Again.mp3" 
+		audio: "assets/audio/On_The_Road_Again.mp3",
+		name: "Willie Nelson"
 	},
 
 	{
 		image: "https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg", 
-		audio: "assets/audio/Wayfaring_Stranger.mp3"
+		audio: "assets/audio/Wayfaring_Stranger.mp3",
+		name: "Johnny Mary_Chapin_Shot_C_0486_Final1"
 	},
 
 	{
 		image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg", 
-		audio: "assets/audio/Crazy.mp3"
+		audio: "assets/audio/Crazy.mp3",
+		name: "Patsy Cline"
 	},
 
 	{
 		image: "http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg", 
-		audio: "assets/audio/Down_At_The_Twist_And_Shout.mp3"
+		audio: "assets/audio/Down_At_The_Twist_And_Shout.mp3",
+		name: "Mary Chapin Carpenter"
 	},
 
   {
 	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
-	  audio: "assets/audio/Let_The_Mystery_Be.mp3"
+	  audio: "assets/audio/Let_The_Mystery_Be.mp3",
+	  name: "Irish Dement"
 	},
 
 	{
 		image: 
 		"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg",
-		audio: "assets/audio/All_The_Best.mp3"
+		audio: "assets/audio/All_The_Best.mp3",
+		name: "John Prine"
 	}
 ]
 
@@ -68,6 +74,7 @@ function displayImage() {
 	var mediaIndex = phrase.indexOf(randPhrase);
 	$(".countryPic").attr("src", media[mediaIndex].image);
 	$(".player").attr("src", media[mediaIndex].audio);
+	$(".name").text(media[mediaIndex].name);
 }
 
 //Create an array of Muscians (as phrases) to be guessed & save array in a variable.
