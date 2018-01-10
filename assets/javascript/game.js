@@ -1,7 +1,10 @@
+// $(document).ready(function() {
+
 var guessesRemaining = 15;
 var lettersGuessed;
 var lettersGuessedArr = [];
 var wins = 0;
+var winsElement = document.getElementById("wins");
 var messages;
 messages = {
 	win: "Congratulations! You win! Play again.",
@@ -11,31 +14,71 @@ messages = {
 // Restart game. 
 function initializeGame() {
 	guessesRemaining = 15;
-	wins = 0;
+	winsElement.innerHTML = "WINS: " + wins;
 	lettersGuessedArr = [];
 	blankPhrase = [];
+	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
+	displayWord();
+	displayImage();
 }
+
+// Images & Audio display.
+var count = 0;
+var showImage;
+
 // Create an array of images to cycle through based on Phrase "WIN" status. 
 // Default will be first image listed.
 
-var image = [
-	"http://d2s4ckmcfyogn8.cloudfront.net/sites/default/files/header_main_images/country-western-music-eps-23986846.jpg",
-	"http://calcoastnews.com/images/2011/01/willie_nelson1.jpg",
-	"https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg",
-	"https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg",
-	"http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg",
-	"http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg",
-	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
-];
+// var image = [
+// 	"http://d2s4ckmcfyogn8.cloudfront.net/sites/default/files/header_main_images/country-western-music-eps-23986846.jpg",
+// 	"http://calcoastnews.com/images/2011/01/willie_nelson1.jpg",
+// 	"https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg",
+// 	"https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg",
+// 	"http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg",
+// 	"http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg",
+// 	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
+// ];
 
-var audio = [
-	"assets/audio/On_The_Road_Again.mp3",
-	"assets/audio/Wayfaring_Stranger.mp3",
-	"assets/audio/Crazy.mp3",
-	"assets/audio/Down_At_The_Twist_And_Shout.mp3",
-	"assets/audio/Let_The_Mystery_Be.mp3",
-	"assets/audio/All_The_Best.mp3"
-];
+var media = [
+	{
+		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
+		audio: "assets/audio/On_The_Road_Again.mp3" 
+	},
+
+	{
+		image: "https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg", 
+		audio: "assets/audio/Wayfaring_Stranger.mp3"
+	},
+
+	{
+		image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg", 
+		audio: "assets/audio/Crazy.mp3"
+	},
+
+	{
+		image: "http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg", 
+		audio: "assets/audio/Down_At_The_Twist_And_Shout.mp3"
+	},
+
+  {
+	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
+	  audio: "assets/audio/Let_The_Mystery_Be.mp3"
+	},
+
+	{
+		image: 
+		"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg",
+		audio: "assets/audio/All_The_Best.mp3"
+	}
+]
+
+// Replace current display with image of winning phrase. This is not yet sync'd & jumps to reset musician as I am deciding on whether 
+// to use delay or user hit button to move on.
+function displayImage() {
+	var mediaIndex = phrase.indexOf(randPhrase);
+	$(".countryPic").attr("src", media[mediaIndex].image);
+	$(".player").attr("src", media[mediaIndex].audio);
+}
 
 //Create an array of Musciians (as phrases) to be guessed & save array in a variable.
 var phrase = [
@@ -59,7 +102,6 @@ var blankPhrase = [];
 
 //User guesses "letter".
 function displayWord(letter = "") {
-
 	var wordContainer = document.getElementById("word");
 	var numGuessesRemainingElement = document.getElementById("guessesRemaining");
 	wordContainer.innerHTML = "";
@@ -82,9 +124,9 @@ function displayWord(letter = "") {
 	}
 
 	wordContainer.innerHTML = blankPhrase.join(" ");
-
 	numGuessesRemainingElement.innerHTML = guessesRemaining;
 	guessesRemaining--;
+
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -97,15 +139,13 @@ document.onkeyup = function (event) {
 	lettersGuessedArr.push(lettersGuessed);
 	lettersGuessedElement.innerHTML = lettersGuessedArr;
 	displayWord(lettersGuessed);
-	checkWin();
-	
+	checkWin();	
 }
 
 function checkWin() {
-
 	//Check user lose.
 	var messagesElement = document.getElementById("messages");
-	var winsElement = document.getElementById("wins");
+	
 	winsElement.innerHTML = "WINS: " + wins;
 
 	if (guessesRemaining === 0) {
@@ -118,7 +158,6 @@ function checkWin() {
 	//Check user win. If user selected letters match random phrase
 	//and phrase has only underscores between the words, then user wins.
 	var blankLetter = false;
-
 	for (var i = 0; i < blankPhrase.length; i++) {
 		if (blankPhrase[i] === "_" && randPhrase[i] !== " ") {
 			blankLetter = true;
@@ -132,13 +171,8 @@ function checkWin() {
 			winsElement.innerHTML = "WINS: " + wins;
 			initializeGame();
 		}
-			
 	}
 
-function changeImage() {
-	var image = [];
-	// First image is the default image displayed prior to solving the phrase.
-	// If user solves phrase then change image to phrase of Current Musician.
-}
+// })
 
 
