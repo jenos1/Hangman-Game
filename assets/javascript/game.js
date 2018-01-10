@@ -57,7 +57,7 @@ var media = [
   {
 	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
 	  audio: "assets/audio/Let_The_Mystery_Be.mp3",
-	  name: "Irish Dement"
+	  name: "Iris Dement"
 	},
 
 	{
