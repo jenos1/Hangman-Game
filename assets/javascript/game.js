@@ -7,7 +7,7 @@ var wins = 0;
 var winsElement = document.getElementById("wins");
 var messages;
 messages = {
-	win: "Congratulations! You win! Play again.",
+	win: "Congratulations! You win! Listen to the Music then Play again.",
 	lose: "Game over! Play again.",
 };
 
