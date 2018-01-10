@@ -39,7 +39,7 @@ var media = [
 	{
 		image: "https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg", 
 		audio: "assets/audio/Wayfaring_Stranger.mp3",
-		name: "Johnny Mary_Chapin_Shot_C_0486_Final1"
+		name: "Johnny Cash"
 	},
 
 	{
