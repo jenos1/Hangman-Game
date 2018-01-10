@@ -17,9 +17,10 @@ function initializeGame() {
 	winsElement.innerHTML = "WINS: " + wins;
 	lettersGuessedArr = [];
 	blankPhrase = [];
+	displayImage();
 	randPhrase = phrase[Math.floor(Math.random() * phrase.length)];
 	displayWord();
-	displayImage();
+	
 }
 
 // Create an array of images to cycle through based on Phrase "WIN" status. 
@@ -36,22 +37,25 @@ var media = [
 	{
 		image: "https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg", 
 		audio: "assets/audio/Wayfaring_Stranger.mp3",
-		name: "Johnny Cash"
+		name: "Johnny Cash",
+		history: "He was the youngest living inductee into the Country Music Hall of Fame in 1980."
 	},
 
 	{
 		image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg", 
 		audio: "assets/audio/Crazy.mp3",
-		name: "Patsy Cline"
+		name: "Patsy Cline",
+		history: "A celebrated country singer best known for her crossover hits, including 'Crazy' and 'Walking After Midnight'."
 	},
 
 	{
 		image: "http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg", 
 		audio: "assets/audio/Down_At_The_Twist_And_Shout.mp3",
-		name: "Mary Chapin Carpenter"
+		name: "Mary Chapin Carpenter",
+		history: "'Shut Up and Kiss Me,' became Carpenter's first song to hit number one on the Billboard Hot Country Songs chart and won her a Grammy for Best Female Country Performance."
 	},
 
-  {
+ 	{
 	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
 	  audio: "assets/audio/Let_The_Mystery_Be.mp3",
 	  name: "Iris Dement",
@@ -71,6 +75,7 @@ var media = [
 // to use delay or user hit button to move on.
 function displayImage() {
 	var mediaIndex = phrase.indexOf(randPhrase);
+	console.log(mediaIndex);
 	$(".countryPic").attr("src", media[mediaIndex].image);
 	$(".player").attr("src", media[mediaIndex].audio);
 	$(".name").text(media[mediaIndex].name);
