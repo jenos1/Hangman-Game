@@ -22,10 +22,6 @@ function initializeGame() {
 	displayImage();
 }
 
-// Images & Audio display.
-var count = 0;
-var showImage;
-
 // Create an array of images to cycle through based on Phrase "WIN" status. 
 // Default will be first image listed.
 
@@ -33,7 +29,8 @@ var media = [
 	{
 		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
 		audio: "assets/audio/On_The_Road_Again.mp3",
-		name: "Willie Nelson"
+		name: "Willie Nelson",
+		history: "Patsy Cline recorded his song 'Crazy'which became a huge hit."
 	},
 
 	{
@@ -57,14 +54,16 @@ var media = [
   {
 	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
 	  audio: "assets/audio/Let_The_Mystery_Be.mp3",
-	  name: "Iris Dement"
+	  name: "Iris Dement",
+	  history: "First began composing songs at the age of 25."
 	},
 
 	{
 		image: 
 		"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg",
 		audio: "assets/audio/All_The_Best.mp3",
-		name: "John Prine"
+		name: "John Prine",
+		history: "Learned to play the guitar at the age of 14."
 	}
 ]
 
@@ -75,6 +74,7 @@ function displayImage() {
 	$(".countryPic").attr("src", media[mediaIndex].image);
 	$(".player").attr("src", media[mediaIndex].audio);
 	$(".name").text(media[mediaIndex].name);
+	$(".history").text(media[mediaIndex].history);
 }
 
 //Create an array of Muscians (as phrases) to be guessed & save array in a variable.
