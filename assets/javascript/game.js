@@ -29,16 +29,6 @@ var showImage;
 // Create an array of images to cycle through based on Phrase "WIN" status. 
 // Default will be first image listed.
 
-// var image = [
-// 	"http://d2s4ckmcfyogn8.cloudfront.net/sites/default/files/header_main_images/country-western-music-eps-23986846.jpg",
-// 	"http://calcoastnews.com/images/2011/01/willie_nelson1.jpg",
-// 	"https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg",
-// 	"https://upload.wikimedia.org/wikipedia/commons/8/8f/Patsy_Cline_II.jpg",
-// 	"http://www.marychapincarpenter.com/wp-content/uploads/2012/05/Mary_Chapin_Shot_C_0486_Final1.jpg",
-// 	"http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg",
-// 	"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg"
-// ];
-
 var media = [
 	{
 		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
@@ -80,7 +70,7 @@ function displayImage() {
 	$(".player").attr("src", media[mediaIndex].audio);
 }
 
-//Create an array of Musciians (as phrases) to be guessed & save array in a variable.
+//Create an array of Muscians (as phrases) to be guessed & save array in a variable.
 var phrase = [
 	"Willie Nelson",
 	"Johnny Cash",
