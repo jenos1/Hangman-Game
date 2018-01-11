@@ -31,7 +31,7 @@ var media = [
 		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
 		audio: "assets/audio/On_The_Road_Again.mp3",
 		name: "Willie Nelson",
-		history: "Patsy Cline recorded his song 'Crazy,' which became a huge hit for her in 1962. He wrote ‘On The Road Again’ for the country music film in which he starred in 1980, 'Honeysuckle Rose'."
+		history: "Patsy Cline recorded his song 'Crazy,' which became a huge hit for her in 1962. He wrote ‘On The Road Again’ for the country music film 'Honeysuckle Rose' in which he starred in 1980."
 	},
 
 	{
