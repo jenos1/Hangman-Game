@@ -38,7 +38,7 @@ var media = [
 		image: "https://cdn.smehost.net/legacyrecordingscom-hydricprod/wp-content/uploads/2011/12/johnnycash.jpg", 
 		audio: "assets/audio/Wayfaring_Stranger.mp3",
 		name: "Johnny Cash",
-		history: "He was the youngest living inductee into the Country Music Hall of Fame in 1980. In 1985, Cash joined friends Willie Nelson, Waylon Jennings and Kris Kristofferson to form The Highwaymen. The supergroup released three albums between 1985 and 1995, scoring a No. 1 hit with the single 'Highwayman' from their first album, 'The Highwaymen'. "
+		history: "He was the youngest living inductee into the Country Music Hall of Fame in 1980. In 1985, Cash joined friends Willie Nelson, Waylon Jennings and Kris Kristofferson to form 'The Highwaymen'. This supergroup released three albums between 1985 and 1995, scoring a No. 1 hit with the single 'Highwayman' from their first album, 'The Highwaymen'. "
 	},
 
 	{
