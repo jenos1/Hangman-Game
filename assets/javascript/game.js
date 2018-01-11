@@ -67,7 +67,7 @@ var media = [
 		"https://upload.wikimedia.org/wikipedia/commons/0/01/John_Prine_by_Ron_Baker.jpg",
 		audio: "assets/audio/All_The_Best.mp3",
 		name: "John Prine",
-		history: "Learned to play the guitar at the age of 14."
+		history: "Learning to play the guitar at the age of 14, he is known as a songwriter's songwriter. Performers from Johnny Case to Joan Baez and Carly Simon have recorded his songs. Kris Kristofferso once said, 'He's so good, we're gonna have to break his fingers."
 	}
 ]
 
