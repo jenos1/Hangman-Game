@@ -24,14 +24,14 @@ function initializeGame() {
 }
 
 // Create an array of images to cycle through based on Phrase "WIN" status. 
-// Default will be first image listed.
+// Default will be first image stored in html.
 
 var media = [
 	{
 		image: "http://calcoastnews.com/images/2011/01/willie_nelson1.jpg", 
 		audio: "assets/audio/On_The_Road_Again.mp3",
 		name: "Willie Nelson",
-		history: "Patsy Cline recorded his song 'Crazy'which became a huge hit."
+		history: "Patsy Cline recorded his song 'Crazy,' which became a huge hit for her in 1962. He wrote ‘On The Road Again’ for the country music film in which he starred, 'Honeysuckle Rose'."
 	},
 
 	{
@@ -71,8 +71,7 @@ var media = [
 	}
 ]
 
-// Replace current display with image of winning phrase. This is not yet sync'd & jumps to reset musician as I am deciding on whether 
-// to use delay or user hit button to move on.
+// Replace current display with image of winning phrase. 
 function displayImage() {
 	var mediaIndex = phrase.indexOf(randPhrase);
 	console.log(mediaIndex);
