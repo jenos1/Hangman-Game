@@ -59,7 +59,7 @@ var media = [
 	  image: "http://thecatholiccatalogue.com/wp-content/uploads/2015/06/Iris-2-High-Rez-Adjusted2.jpg", 
 	  audio: "assets/audio/Let_the_Mystery_Be.mp3",
 	  name: "Iris Dement",
-	  history: "First began composing songs at the age of 25."
+	  history: "The youngest of fourteen children, Iris irst began composing songs at the age of 25. In 1999, she collaborated with countryman John Prine on his album In Spite of Ourselves. She recorded four duets with Prine that earned her a Grammy. "
 	},
 
 	{
